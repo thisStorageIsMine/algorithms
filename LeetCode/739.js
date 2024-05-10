@@ -15,6 +15,14 @@ var dailyTemperatures = function (temperatures) {
         const t = temperatures[i];
         const tInfo = { index: i, value: t }
 
+<<<<<<< HEAD
+=======
+        if (stack.length === 0) {
+            stack.push(tInfo);
+            continue;
+        }
+
+>>>>>>> 87834399c0124adcae7e72cf49665c8b22da9fd2
         while (stack.length && stack[stack.length - 1].value < t) {
             const prevItem = stack.pop();
 
