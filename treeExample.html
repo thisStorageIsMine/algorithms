@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деревья</title>
+</head>
+
+<body>
+    <ul class="tree">
+        <li>
+            <input type="checkbox">
+            <ul class="tree">
+                <li>
+                    <input type="checkbox">
+
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <ul class="tree">
+                        <li><input type="checkbox"></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+
+        <li><input type="checkbox"></li>
+    </ul>
+
+    <script>
+        document.body.addEventListener('click', (e) => {
+            if (e.target.type !== 'checkbox') return;
+
+            const isChecked = e.target.checked
+            walk(e.target, isChecked)
+        })
+
+        function walk(elem, state) {
+            const nextTree = elem.parentNode.children[1];
+            if (!nextTree) return;
+
+            const stack = [...nextTree.children];
+            while (stack.length) {
+                const cur = stack.pop();
+                cur.children[0].checked = state;
+
+                const nextTree = cur.children[1];
+                if (nextTree) {
+                    stack.push(...nextTree.children)
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

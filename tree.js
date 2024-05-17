@@ -55,3 +55,4 @@ function getSum(tree) {
 }
 
 console.log(getSum(tree))
+console.log(getSum([]))
